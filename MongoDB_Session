@@ -1,0 +1,56 @@
+//http://blog.mongodb.org/post/80579086742/running-mongodb-queries-concurrently-with-go
+//WAF: WIP, still needs a lot of work but I'm trying to get a basic feel for the languages, still.
+
+
+package main
+
+import (
+	"labix.org/v2/mgo"
+	"labix.org/v2/mgo/bson"
+	"log"
+	"sync"
+	"time"
+)
+
+const (
+	MongoDBHosts = ""
+	AuthDatabase = ""
+	UserName = "testuser"
+	Password = "testpass"
+	TestDatabase = ""
+)
+
+type (								//Populate
+	userDirectory struct {			//This function is populated with my names and hierarcy.
+		UserID		int
+		UserName	string
+		Type		string
+	}
+	
+	password struct {
+		UserID		int
+		Password	string
+	}
+)
+
+func main() {
+	mongoDBDialInfo := &mgo.DialInfo {
+		Addrs:		[]string{MongoDBHosts},
+		Timeout:	60 * time.Second,
+		Database:	AuthDatabase,
+		Username:	UserName,
+		Password:	Password,
+	}
+	
+	mongoSession, err := mgo.DialWithInfo(mongoDBDialInfo)
+	if err != nil {
+		log.Fatalf("CreateSession: %s\n", err)
+	}
+	
+	mongoSession.SetMode(mgo.Strong, true)		//Strong means all reads and writes will be made to the primary server.
+
+	defer waitGroup.Done()
+	
+	sessionCopy := mongoSession.Copy())
+	defer sessionCopy.Close()
+}
