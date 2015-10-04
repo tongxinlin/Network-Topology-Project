@@ -1,0 +1,29 @@
+.bottom {
+  position: absolute;
+  top: 70%;
+  width:100%;
+  height:30%;
+  background-color: blueviolet;
+}
+
+.right {
+  position: relative;
+  float: right;
+  height: 70%;
+  width: 50%;
+  background-color: blue;
+}
+
+.left {
+  position: relative;
+  float: left;
+  height: 70%;
+  width: 50%;
+  background-color: brown;
+}
+
+body {
+  align-content: center;
+  width: 100%;
+  height: 100%;
+}
