@@ -9,23 +9,31 @@
     </head>
     <body>
       <div class='left'>
-        <button class='upload'>Upload </button><!--switches to cancel when clicked, file chooser-->
-        <button class='calc'>Calculate</button> <!--switches to cancel when clicked -->
+        <ul>
+          <li><button class='upload'>Upload </button></center></li><!--switches to cancel when clicked, file chooser-->
+          <li><button class='calc'>Calculate</button></li> <!--switches to cancel when clicked -->
+          <li><button class='cancel'>Cancel</button></li> <!--sowhing the cancel when clicked -->
+        </ul>
       </div>
       <div class='right'>
         <div class='output'>
-        
+          <p> 
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            
+          </p>
         </div>
       </div>
       
       <div class='bottom'>
-        <p>
-          SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT 
-          SHIT SHIT SHIT SHIT SHIT SHIT SHIT 
-          SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT 
-          SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT SHIT 
-        </p>
-        
+        <label for='upload-progess'>Upload Progress</label>
+        <progress id='upload-progess'  value='50' max='100'> </progress>
+        <br />
+        <label for='calc-progess'>Path Finding Progress</label>
+        <progress id='calc-progress' value='70' max='100'> </progress>
       </div>
     </body>
 </html>
