@@ -2,7 +2,10 @@ body {
   font-family:sans-serif;
 
 }
-
+.top {
+  position: relative;
+  width: 100%;
+}
 
 
 
@@ -52,10 +55,10 @@ body {
   position: relative;
   left: 32%;
   border-radius: 3px;
-  border-color:  #424242;
+  border-color:  #000;
   border-style: solid;
   font-family: inherit;
-  color: #424242;
+  color: #000;
   font-size: 20px;
   background: #34a5d9;
   padding: 40px 40px 40px 40px;
@@ -72,10 +75,10 @@ body {
   position: relative;
   left: 30%;
   border-radius: 3px;
-  border-color:  #424242;
+  border-color:  #000;
   border-style: solid;
   font-family: inherit;
-  color: #424242;
+  color: #000;
   font-size: 20px;
   background: #00d610;
   padding: 40px 40px 40px 40px;
@@ -92,10 +95,10 @@ body {
   position: relative;
   left: 32%;
   border-radius: 3px;
-  border-color:  #424242;
+  border-color:  #000;
   border-style: solid;
   font-family: inherit;
-  color: #424242;
+  color: #000;
   font-size: 20px;
   background: #ff361e;
   padding: 40px 40px 40px 40px;
