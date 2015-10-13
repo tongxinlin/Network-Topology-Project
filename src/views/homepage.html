@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Network topology</title>
+        <style>
+			body {
+			  font-family:sans-serif;
+
+			}
+			.top {
+			  position: relative;
+			  width: 100%;
+			}
+
+
+
+
+			.bottom {
+			  position: absolute;
+			  top: 70%;
+			  width:100%;
+			  height:30%;
+			  background-color: inherit;
+			}
+
+			.right {
+			  position: relative;
+			  float: right;
+			  height: 70%;
+			  width: 50%;
+			  background-color: inherit;
+			}
+
+			.left {
+			  position: relative;
+			  float: left;
+			  height: 70%;
+			  width: 50%;
+			  background-color: inherit;
+			  align-content: center;
+			}
+
+			.output {
+			  border-color: #000;
+			  border-style: solid;
+			  border-width: 2px;
+			  margin: 15px;
+			  background-color: #e5e5e5;
+			  padding: 10px;
+			}
+
+			body {
+			  background-color: #cccccc;
+			  align-content: center;
+			  width: 100%;
+			  height: 100%;
+			}
+
+			.upload {
+			  position: relative;
+			  left: 32%;
+			  border-radius: 3px;
+			  border-color:  #000;
+			  border-style: solid;
+			  font-family: inherit;
+			  color: #000;
+			  font-size: 20px;
+			  background: #34a5d9;
+			  padding: 40px 40px 40px 40px;
+			  text-decoration: none;
+			}
+
+			.upload:hover {
+			  background: #3cb0fd;
+			  text-decoration: none;
+			  cursor: pointer;
+			}
+
+			.calc {
+			  position: relative;
+			  left: 30%;
+			  border-radius: 3px;
+			  border-color:  #000;
+			  border-style: solid;
+			  font-family: inherit;
+			  color: #000;
+			  font-size: 20px;
+			  background: #00d610;
+			  padding: 40px 40px 40px 40px;
+			  text-decoration: none;
+			}
+
+			.calc:hover {
+			  background: #00f413;
+			  text-decoration: none;
+			  cursor: pointer;
+			}
+
+			.cancel {
+			  position: relative;
+			  left: 32%;
+			  border-radius: 3px;
+			  border-color:  #000;
+			  border-style: solid;
+			  font-family: inherit;
+			  color: #000;
+			  font-size: 20px;
+			  background: #ff361e;
+			  padding: 40px 40px 40px 40px;
+			  text-decoration: none;
+			}
+
+			.cancel:hover {
+			  background: #ff4833;
+			  text-decoration: none;
+			  cursor: pointer;
+			}
+
+			progress {
+			  align-content: center;
+			  width: 90%;
+			  height: 20px;
+			}
+
+			ul {
+			  list-style: none;
+			}
+			li {
+			  padding: 10px;
+		      
+			}
+		</style>
+    </head>
+    <body>
+      <div class='top'>
+        <p>
+          <h4>names and shit and maybe a heading? who knows and cares at this moment in time, ooh baby maybe even a logo?</h4>
+         
+        </p>
+      </div>
+      <div class='left'>
+        <ul>
+          <li><button class='upload'>Upload </button></center></li><!--switches to cancel when clicked, file chooser-->
+          <li><button class='calc'>Calculate</button></li> <!--switches to cancel when clicked -->
+          <li><button class='cancel'>Cancel</button></li> <!--sowhing the cancel when clicked -->
+        </ul>
+      </div>
+      <div class='right'>
+        <label for='output'>shortest path from "A" to "B"</label>
+        <div id='output' class='output'>
+          <p> 
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            
+          </p>
+        </div>
+      </div>
+      
+      <div class='bottom'>
+        <label for='upload-progess'>Upload Progress</label>
+        <progress id='upload-progess'  value='50' max='100'> </progress>
+        <br />
+        <label for='calc-progess'>Path Finding Progress</label>
+        <progress id='calc-progress' value='70' max='100'> </progress>
+      </div>
+    </body>
+</html>
