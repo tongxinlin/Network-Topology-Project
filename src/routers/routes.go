@@ -13,5 +13,10 @@ func Init() {
 	
 	// routes the homepage to the browser
 	http.HandleFunc("/home",controllers.HomeController)
+	http.HandleFunc("/upload",controllers.Upload)
+	
+	
+	
+	
 
 } 
