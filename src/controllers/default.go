@@ -8,8 +8,14 @@ import (
 	"net/http"
 	"fmt"
     "os"
-	 "io"
+	"io"
 )
+
+
+const(
+	upload_dir = "./src/tmp/" //don't forget the last slash
+)
+
 
 func HomeController(rw http.ResponseWriter, req *http.Request) {
 
@@ -19,7 +25,7 @@ func HomeController(rw http.ResponseWriter, req *http.Request) {
 func renderHomepage(rw http.ResponseWriter, req *http.Request) {
 	
 	// grab the homepage from views 
-	homepage, err := template.ParseFiles("src/views/homepage.html")
+	homepage, err := template.ParseFiles("src/views/html/homepage.html")
 	
 	if err != nil {
 		log.Println(err)
@@ -46,7 +52,12 @@ func Upload(rw http.ResponseWriter, req *http.Request) {
 	defer uploadfile.Close()
 	
 	// creates a file for the newly uplaoded file to be copied into, from the POST
-	serverFile, err := os.Create("/tmp/uploadedfile")
+
+	//serverFile, err := os.Create("/tmp/uploadedfile") //"yourfilename.ext"
+	
+	//serverFile, err := os.Create(upload_dir + header.Filename) //fine
+
+	serverFile, err := os.OpenFile(upload_dir + header.Filename, os.O_CREATE|os.O_WRONLY, 0660) //fine
 	
 	if err != nil {
 		fmt.Fprintln(rw, err)

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Network topology</title>
+		<!--internal stylesheet cause i couldnt figure out the external one. -->
+       	<link rel="stylesheet" type="text/css" href="/css/main.css" />
+    </head>
+    <body>
+      <div class='top'>
+        <p>
+          <h3>CS350 - Team Three</h3>
+          Network Topology
+         
+        </p>
+      </div>
+      <div class='left'>
+      <!--
+        <form enctype="multipart/form-data" method="post" >
+          <ul>
+            <li><input type="file" name="upload-file"  /></li>
+  	        <li><input type="hidden" name="token" value="{{.}}"/></li>
+            <li><input action="http://127.0.0.1:9090/upload" type="submit" value="upload" /></li> //not working for my broswer..
+            <li><input action="/calc" value="Calculate" type="submit" /></li>
+          </ul>
+        </form>
+      -->
+
+        <form enctype="multipart/form-data" action= "http://127.0.0.1:8080/upload" method="post" >
+          <ul>
+            <li><input type="file" name="upload-file"/></li>
+            <li><input type="submit" value="upload" /></li>
+          </ul>
+        </form>
+        
+          
+        
+        <label for='output'><h4>shortest path from "A" to "B" </h4></label>
+        <div id='output' class='output'>
+          <p> 
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
+            
+          </p>
+        </div>
+      </div>
+      <div class='bottom'>
+         <p>Upload Progress</p>
+        <progress id='upload-progess'  value='50' max='100'> </progress>
+        <p> Path Finding Progress</p>
+        <progress id='calc-progress' value='70' max='100'> </progress>
+      </div>
+    </body>
+</html>
