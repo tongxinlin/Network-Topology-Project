@@ -6,6 +6,9 @@
         <title>Network topology</title>
 		<!--internal stylesheet cause i couldnt figure out the external one. -->
        	<link rel="stylesheet" type="text/css" href="/css/main.css" />
+       	<link type="text/javascript" src="js/getOutPut.js" />
+		
+		
     </head>
     <body>
       <div class='top'>
@@ -27,7 +30,8 @@
         </form>
       -->
 
-        <form enctype="multipart/form-data" action= "http://127.0.0.1:8080/process" method="post" >
+<!--        <form enctype="multipart/form-data" action= "http://127.0.0.1:8080/process" method="post" > for when we get a staic IP  -->
+        <form enctype="multipart/form-data" action= "/process" method="post" >
           <ul>
             <li><input type="file" name="upload-file"/></li>
             <li><input type="submit" value="calc" /></li>
@@ -37,17 +41,18 @@
           
         
         <label for='output'><h4>shortest path from "A" to "B" </h4></label>
-        <div id='output' class='output'>
+		<button id="refresh"> refresh output </button>
+        <div id='output' class='output'> <!-- utilize some sort of script on the upload file.txt  and embed it to the homepage in the output div.  -->
           <p> 
             a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
             a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
             a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
             a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
             a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z
-            
           </p>
         </div>
       </div>
+
       <div class='bottom'>
          <p>Upload Progress</p>
         <progress id='upload-progess'  value='50' max='100'> </progress>

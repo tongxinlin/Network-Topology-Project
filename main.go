@@ -11,9 +11,7 @@ import (
 func main() {
 
 	//inititalize app 
-	routers.Init()
-	
-	
+	routers.InititalizeApp()
 	
 	//set the static hosting server, local host for testing right now
 	host := ":8080"

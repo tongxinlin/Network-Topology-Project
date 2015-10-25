@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func Init() {
+func InititalizeApp() {
   	//testing out Go's file server stuff 
 	fs := http.FileServer(http.Dir("src/views/html"))
 	http.Handle("/", fs)
