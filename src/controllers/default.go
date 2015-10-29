@@ -3,8 +3,6 @@ package controllers
 import (
 	"html/template"
 	"log"
-	//"models"
-	//"strings"
 	"net/http"
 	"fmt"
     "os"
@@ -14,7 +12,8 @@ import (
 )
 
 const(
-	upload_dir = "./src/tmp/input/" //don't forget the last slash
+	upload_dir = "./src/tmp/input/"
+	output_dir = "./src/tmp/output/"
 )
 
 
@@ -23,12 +22,25 @@ const(
 
 
 func ProcessRequest(rw http.ResponseWriter, req *http.Request){
+	PrepareDirs();
 	outputFileName := ProcessedFile(UploadedFile(rw,req))
 	
 	fmt.Println(outputFileName)
 	
 	outputContent, _ := ioutil.ReadFile(outputFileName)
 	fmt.Fprintln(rw,string(outputContent))
+}
+
+func PrepareDirs(){
+	_, err1 := os.Stat(upload_dir)
+	if err1 != nil {
+		os.MkdirAll(upload_dir, 0711)
+	}
+
+	_, err2 := os.Stat(output_dir)
+	if err2 != nil {
+		os.MkdirAll(output_dir, 0711)
+	}
 }
 
 func UploadedFile(w http.ResponseWriter, r *http.Request)string{
