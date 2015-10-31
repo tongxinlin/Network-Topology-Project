@@ -29,17 +29,22 @@ void testDijkstraGraph()
 	result->PrintOut(cout);
 }
 
-void testYenAlg()
+void yenAlg()
 {
 	//Graph my_graph("../data/test_6_2");
 	Graph my_graph("data/danYen");
-
+    
+    // TODO: Create some kind of struct for all wanted ip pairs
+    
+    // TODO: Get the wanted ips
 	YenTopKShortestPathsAlg yenAlg(my_graph, my_graph.get_vertex(46),
 		my_graph.get_vertex(13));
 
 	int i=0;
+    // TODO: If max k value is given, add to break the while loop
 	while(yenAlg.has_next())
 	{
+        // TODO: Add mongoDB query here to add the entry
 		++i;
 		yenAlg.next()->PrintOut(cout);
 	}
@@ -52,8 +57,11 @@ void testYenAlg()
 
 int main(...)
 {
+    // TODO: get the input (certain ips / all of them, k defined?)
 	cout << "Welcome to the real world!" << endl;
 
 	//testDijkstraGraph();
-	testYenAlg();
+    
+    // TODO: Add args to function call
+	yenAlg();
 }
