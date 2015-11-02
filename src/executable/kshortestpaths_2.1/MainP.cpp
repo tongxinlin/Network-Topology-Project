@@ -29,24 +29,24 @@ void testDijkstraGraph()
 	result->PrintOut(cout);
 }
 
-void yenAlg()
+void getKShortestPaths(int k, int startVertex, int destinationVertex, Graph my_graph, ofstream& outFile)
 {
 	//Graph my_graph("../data/test_6_2");
-	Graph my_graph("data/danYen");
+	//Graph my_graph("data/danYen");
     
     // TODO: Create some kind of struct for all wanted ip pairs
     
     // TODO: Get the wanted ips
-	YenTopKShortestPathsAlg yenAlg(my_graph, my_graph.get_vertex(46),
-		my_graph.get_vertex(13));
+	YenTopKShortestPathsAlg yenAlg(my_graph, my_graph.get_vertex(startVertex),
+		my_graph.get_vertex(destinationVertex));
 
 	int i=0;
     // TODO: If max k value is given, add to break the while loop
-	while(yenAlg.has_next())
+	while(yenAlg.has_next() && i < k)
 	{
         // TODO: Add mongoDB query here to add the entry
 		++i;
-		yenAlg.next()->PrintOut(cout);
+		yenAlg.next()->PrintOut(outFile);
 	}
 
 // 	System.out.println("Result # :"+i);
@@ -55,13 +55,27 @@ void yenAlg()
 
 }
 
-int main(...)
+int main(int argc, const char *argv[])
 {
-    // TODO: get the input (certain ips / all of them, k defined?)
-	cout << "Welcome to the real world!" << endl;
-
+    string fileName = argv[1];
+    int k = stoi(argv[2]);
+    ifstream inFile;
+    inFile.open(fileName);
+    int amountOfNodes;
+    inFile >> amountOfNotes;
+    infile.close
+    Graph myGraph;
+    
+    ofstream outFile;
+    outFile.open("./src/tmp/output/output.txt");
+    
+    for (int start = 0; start < amountOfNodes; start++){
+        for (int destination = 0; destination < amountOfNodes; destination++){
+        	getKShortestPaths(k, start, destination, myGraph, outFile);
+        }
+    }
+    outFile.close();
+    cout << "./src/tmp/output/output.txt";
 	//testDijkstraGraph();
     
-    // TODO: Add args to function call
-	yenAlg();
 }
