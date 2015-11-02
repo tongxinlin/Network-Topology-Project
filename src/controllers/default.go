@@ -43,7 +43,7 @@ func PrepareDirs(){
 	}
 }
 
-func UploadedFile(w http.ResponseWriter, r *http.Request)string, string{
+func UploadedFile(w http.ResponseWriter, r *http.Request)(string, string){
 	// "upload-file" is from the POST method of the form on the web page
 	inputFile, header, _ := r.FormFile("upload-file")
 	kValue := r.FormValue("k")
