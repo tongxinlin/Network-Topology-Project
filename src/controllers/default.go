@@ -22,7 +22,7 @@ const(
 
 
 func ProcessRequest(rw http.ResponseWriter, req *http.Request){
-	PrepareDirs();
+	PrepareDirs()
 	outputFileName := ProcessedFile(UploadedFile(rw,req))
 	
 	fmt.Println(outputFileName)
@@ -43,10 +43,10 @@ func PrepareDirs(){
 	}
 }
 
-func UploadedFile(w http.ResponseWriter, r *http.Request)string{
+func UploadedFile(w http.ResponseWriter, r *http.Request)string, string{
 	// "upload-file" is from the POST method of the form on the web page
 	inputFile, header, _ := r.FormFile("upload-file")
-	
+	kValue := r.FormValue("k")
 	defer inputFile.Close()
 	
 	// tells OS to create a file with appicable permissions
@@ -57,12 +57,12 @@ func UploadedFile(w http.ResponseWriter, r *http.Request)string{
 	// writes to the serverFile from the POST
 	io.Copy(uploadedFile, inputFile)
 	uploadedFileName := uploadedFile.Name()
-	return uploadedFileName
+	return uploadedFileName, kValue
 }
 
-func ProcessedFile(uploadedFile string)string{
+func ProcessedFile(uploadedFile string, kValue string)string{
 	executablePath := "./src/executable/test.exe"
-	argv := []string{uploadedFile}
+	argv := []string{uploadedFile, kValue}
 	cmd := exec.Command(executablePath, argv...)
 	output, _ := cmd.Output()
 	outputFileName := string(output)
