@@ -8,6 +8,7 @@
         <script type="text/javascript" src="/js/jquery-1.11.3.js"></script>
         <script type="text/javascript" src="/js/jquery.form.min.js"></script>
         <script type="text/javascript" src="/js/form.js"></script>
+		<script type="text/javascript" src="/js/dropDownMenus.js"></script>
 		
 		
     </head>
@@ -24,8 +25,16 @@
         <form id="form" enctype="multipart/form-data" action= "/process" method="post" >
           <ul>
             <li><input type="file" name="upload-file"/></li>
-			<li><label for="dest"> Number of Paths </label></li>			
-			<li><input id="dest" name="k" type="number" /></li>	
+			  
+			<li><label for="src"> Source Node </label></li>
+			<li><select id="src" name="src"></select></li>
+			  
+			<li><label for="dest"> Destination Node </label></li>
+			<li><select id="dest" name="dest"></select></li>
+			  
+			<li><label for="kpaths"> Number of Paths </label></li>			
+			<li><input id="kpaths" name="k" type="number" /></li>	
+			  
             <li><input type="submit" value="Calculate" /></li><span id="msg"></span>
           </ul>
         </form>

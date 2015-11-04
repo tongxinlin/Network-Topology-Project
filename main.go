@@ -4,7 +4,7 @@ import (
 	"net/http"
 	//"fmt"
 	"routers"
-	//_ "models"
+	_ "models"
 	"log" 
 )
 
@@ -20,7 +20,4 @@ func main() {
 	if err := http.ListenAndServe(host,nil); err != nil {
 		log.Fatal("Server Error", err)
 	}
-	
-	http.ListenAndServe(host, nil)
-	log.Println("listening on" + host)
 }
