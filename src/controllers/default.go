@@ -43,12 +43,9 @@ func PrepareDirs(){
 	}
 }
 
-<<<<<<< Updated upstream
 
 func UploadedFile(w http.ResponseWriter, r *http.Request) (string, string) {
-=======
-func UploadedFile(w http.ResponseWriter, r *http.Request) (string, string){
->>>>>>> Stashed changes
+
 	// "upload-file" is from the POST method of the form on the web page
 	inputFile, header, _ := r.FormFile("upload-file")
 	kValue := r.FormValue("k")
@@ -76,15 +73,10 @@ func ProcessedFile(uploadedFile string, kValue string)string{
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-func HomeController(rw http.ResponseWriter, req *http.Request) {
-
-	renderHomepage(rw, req)
-}
-
 func renderHomepage(rw http.ResponseWriter, req *http.Request) {
 	
 	// grab the homepage from views 
-	homepage, err := template.ParseFiles("src/views/html/homepage.html")
+	homepage, err := template.ParseFiles("src/views/html/index.html")
 	
 	if err != nil {
 		log.Println(err)
@@ -96,4 +88,19 @@ func renderHomepage(rw http.ResponseWriter, req *http.Request) {
 	homepage.Execute(rw, homepage)
 }
 
+
+func renderQueryPage(rw http.ResponseWriter, req *http.Request) {
+	
+	// grab the homepage from views 
+	homepage, err := template.ParseFiles("src/views/html/query.html")
+	
+	if err != nil {
+		log.Println(err)
+		http.Error(rw, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	
+	// send it to the browser
+	homepage.Execute(rw, homepage)
+}
 

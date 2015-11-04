@@ -1,9 +1,36 @@
 <html>
-	<head>
-		<title>Login</title>
-		<h1>Welcome</h1>
-	</head>
-	<body>
-		<a href="/home">Home</a>
-	</body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Network topology</title>
+  <link rel="stylesheet" type="text/css" href="/css/main.css" />
+  <script type="text/javascript" src="/js/jquery-1.11.3.js"></script>
+  <script type="text/javascript" src="/js/jquery.form.min.js"></script>
+  <script type="text/javascript" src="/js/form.js"></script>
+</head>
+
+<body>
+  <h1>Network topology</h1>
+  <br/>
+  <form id="form" enctype="multipart/form-data" action="/process" method="post">
+    <ul>
+      <li>
+        <input type="file" name="upload-file" />
+      </li>
+      <li>
+        <input type="submit" value="Upload" /><span id="msg"></span>
+      </li>
+<!--
+      <li>
+        <input type="checkbox" value="something"/>
+      </li>
+-->
+    </ul>
+  </form>
+  
+  <a href="/query.html">Query</a>
+  
+</body>
+
 </html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Network topology</title>
+       	<link rel="stylesheet" type="text/css" href="/css/main.css" />
+        <script type="text/javascript" src="/js/jquery-1.11.3.js"></script>
+        <script type="text/javascript" src="/js/jquery.form.min.js"></script>
+        <script type="text/javascript" src="/js/form.js"></script>
+		<script type="text/javascript" src="/js/dropDownMenus.js"></script>
+		
+		
+    </head>
+    <body>
+      <div class='top'>
+        <p>
+          <h3>CS350 - Team Three</h3>
+          Network Topology
+        </p>
+      </div>
+      <div class='left'>
+
+        <form id="form" enctype="multipart/form-data" action= "/process" method="post" >
+          <ul>
+			  
+			<li><label for="src"> Source Node </label></li>
+			<li><select id="src" name="src"></select></li>
+			  
+			<li><label for="dest"> Destination Node </label></li>
+			<li><select id="dest" name="dest"></select></li>
+			  
+			<li><label for="kpaths"> Number of Paths </label></li>			
+			<li><input id="kpaths" name="k" type="number" /></li>	
+			  
+            <li><input type="submit" value="Calculate" /></li><span id="msg"></span>
+          </ul>
+        </form>
+		  
+        <label for='output'><h4>shortest path from "A" to "B" </h4></label>
+        <div id='output' class='output'> 
+
+            Example Output: 
+            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z         
+
+        </div>
+      </div>
+
+    </body>
+</html>
+
+<!--
+
+      <div class='bottom'>
+         <p>Upload Progress</p>
+        <progress id='upload-progess'  value='50' max='100'> </progress>
+        <p> Path Finding Progress</p>
+        <progress id='calc-progress' value='70' max='100'> </progress>
+      </div>
+
+-->

@@ -19,6 +19,6 @@ function showRequest(formData) {
  
 // post-submit callback 
 function showResponse(responseText) { 
-    $("#msg").html("processed successfully");
+    $("#msg").html("  Upload Successful");
 	$("#output").html(responseText);
 }
