@@ -29,10 +29,10 @@ void testDijkstraGraph()
 	result->PrintOut(cout);
 }
 
-void getKShortestPaths(int k, int startVertex, int destinationVertex, Graph my_graph, ofstream& outFile)
+void getKShortestPaths(int k, int startVertex, int destinationVertex, string filename, ofstream& outFile)
 {
 	//Graph my_graph("../data/test_6_2");
-	//Graph my_graph("data/danYen");
+	Graph my_graph(filename);
     
     // TODO: Create some kind of struct for all wanted ip pairs
     
@@ -47,6 +47,7 @@ void getKShortestPaths(int k, int startVertex, int destinationVertex, Graph my_g
         // TODO: Add mongoDB query here to add the entry
 		++i;
 		yenAlg.next()->PrintOut(outFile);
+        outFile << '\n';
 	}
 
 // 	System.out.println("Result # :"+i);
@@ -62,16 +63,15 @@ int main(int argc, const char *argv[])
     ifstream inFile;
     inFile.open(fileName);
     int amountOfNodes;
-    inFile >> amountOfNotes;
-    infile.close
-    Graph myGraph;
+    inFile >> amountOfNodes;
+    inFile.close();
     
     ofstream outFile;
     outFile.open("./src/tmp/output/output.txt");
     
     for (int start = 0; start < amountOfNodes; start++){
         for (int destination = 0; destination < amountOfNodes; destination++){
-        	getKShortestPaths(k, start, destination, myGraph, outFile);
+        	getKShortestPaths(k, start, destination, fileName, outFile);
         }
     }
     outFile.close();

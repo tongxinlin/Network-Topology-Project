@@ -43,8 +43,12 @@ func PrepareDirs(){
 	}
 }
 
+<<<<<<< Updated upstream
 
 func UploadedFile(w http.ResponseWriter, r *http.Request) (string, string) {
+=======
+func UploadedFile(w http.ResponseWriter, r *http.Request) (string, string){
+>>>>>>> Stashed changes
 	// "upload-file" is from the POST method of the form on the web page
 	inputFile, header, _ := r.FormFile("upload-file")
 	kValue := r.FormValue("k")
@@ -62,7 +66,7 @@ func UploadedFile(w http.ResponseWriter, r *http.Request) (string, string) {
 }
 
 func ProcessedFile(uploadedFile string, kValue string)string{
-	executablePath := "./src/executable/test.exe"
+	executablePath := "./src/executable/final"
 	argv := []string{uploadedFile, kValue}
 	cmd := exec.Command(executablePath, argv...)
 	output, _ := cmd.Output()
