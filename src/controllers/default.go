@@ -73,9 +73,9 @@ func ProcessedFile(uploadedFile string, kValue string)string{
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-func renderHomepage(rw http.ResponseWriter, req *http.Request) {
+func RenderHomepage(rw http.ResponseWriter, req *http.Request) {
 	
-	// grab the homepage from views 
+	// grab index.html from views 
 	homepage, err := template.ParseFiles("src/views/html/index.html")
 	
 	if err != nil {
@@ -89,10 +89,10 @@ func renderHomepage(rw http.ResponseWriter, req *http.Request) {
 }
 
 
-func renderQueryPage(rw http.ResponseWriter, req *http.Request) {
+func RenderQueryPage(rw http.ResponseWriter, req *http.Request) {
 	
-	// grab the homepage from views 
-	homepage, err := template.ParseFiles("src/views/html/query.html")
+	// grab query.html from views 
+	query, err := template.ParseFiles("src/views/html/query.html")
 	
 	if err != nil {
 		log.Println(err)
@@ -101,6 +101,6 @@ func renderQueryPage(rw http.ResponseWriter, req *http.Request) {
 	}
 	
 	// send it to the browser
-	homepage.Execute(rw, homepage)
+	query.Execute(rw, query)
 }
 

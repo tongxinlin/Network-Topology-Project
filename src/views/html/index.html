@@ -11,26 +11,41 @@
 </head>
 
 <body>
-  <h1>Network topology</h1>
-  <br/>
+  <div class="top">
+      <img src="clarkson-lg-logo.png" alt="logo">
+  </div>
+  
+  <div class="middle">
   <form id="form" enctype="multipart/form-data" action="/process" method="post">
-    <ul>
-      <li>
-        <input type="file" name="upload-file" />
-      </li>
-      <li>
-        <input type="submit" value="Upload" /><span id="msg"></span>
-      </li>
-<!--
-      <li>
-        <input type="checkbox" value="something"/>
-      </li>
--->
-    </ul>
+    <fieldset>
+       <legend><h4>File Upload</h4></legend>
+      <ul>
+        <li>
+          <input type="file" name="upload-file" />
+        </li>
+        <li>
+          <input type="submit" value="Upload" /><span id="msg"></span>
+        </li>
+        
+        <li>
+          <progress value="70" max="100">70 %</progress>
+        </li>
+      </ul>
+    </fieldset>
   </form>
   
-  <a href="/query.html">Query</a>
-  
+  <form action="/query">
+    <fieldset>
+       <legend><h4>Query Existing Topology</h4></legend>
+      <ul>
+        <li>
+          <input type="submit" value="Query" />
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+    
+  </div>
 </body>
 
 </html>

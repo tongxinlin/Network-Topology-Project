@@ -1,52 +1,135 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Network topology</title>
-       	<link rel="stylesheet" type="text/css" href="/css/main.css" />
-        <script type="text/javascript" src="/js/jquery-1.11.3.js"></script>
-        <script type="text/javascript" src="/js/jquery.form.min.js"></script>
-        <script type="text/javascript" src="/js/form.js"></script>
-		<script type="text/javascript" src="/js/dropDownMenus.js"></script>
-		
-		
-    </head>
-    <body>
-      <div class='top'>
-        <p>
-          <h3>CS350 - Team Three</h3>
-          Network Topology
-        </p>
-      </div>
-      <div class='left'>
 
-        <form id="form" enctype="multipart/form-data" action= "/process" method="post" >
-          <ul>
-			  
-			<li><label for="src"> Source Node </label></li>
-			<li><select id="src" name="src"></select></li>
-			  
-			<li><label for="dest"> Destination Node </label></li>
-			<li><select id="dest" name="dest"></select></li>
-			  
-			<li><label for="kpaths"> Number of Paths </label></li>			
-			<li><input id="kpaths" name="k" type="number" /></li>	
-			  
-            <li><input type="submit" value="Calculate" /></li><span id="msg"></span>
-          </ul>
-        </form>
-		  
-        <label for='output'><h4>shortest path from "A" to "B" </h4></label>
-        <div id='output' class='output'> 
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Network topology</title>
+  <link rel="stylesheet" type="text/css" href="/css/main.css" />
+  <script type="text/javascript" src="/js/jquery-1.11.3.js"></script>
+  <script type="text/javascript" src="/js/jquery.form.min.js"></script>
+  <script type="text/javascript" src="/js/form.js"></script>
+  <script type="text/javascript" src="/js/dropDownMenus.js"></script>
+</head>
 
-            Example Output: 
-            a -> b -> c -> e -> f -> g -> h -> i -> j -> k -> l -> m -> n -> o -> p -> q -> r -> s -> t -> u -> v -> w -> x -> y -> z         
+<body>
+  <div class='top'>
+    <img src="clarkson-lg-logo.png" alt="logo">
+  </div>
+  <div class='middle'>
+<!--
+    <form  action="/chooseTopology">
+      <fieldset>
+        <legend>
+          <h4>Define Topology</h4></legend>
+        <ul>
+          <li>
+            <label for="top"> Source Topology</label>
+          </li>
+          <li>
+            <select id="top" name="top"></select>
+          </li>
+        </ul>
+      </fieldset>
+    </form>
+-->
+    
+    <form id="form" enctype="multipart/form-data" action="/process" method="post">
+      <fieldset>
+        <legend>
+          <h4>Define Nodes</h4></legend>
+        <ul>
 
-        </div>
-      </div>
+          <li>
+            <label for="src"> Source Node </label>
+          </li>
+          <li>
+            <select id="src" name="src"></select>
+          </li>
 
-    </body>
+          <li>
+            <label for="dest"> Destination Node </label>
+          </li>
+          <li>
+            <select id="dest" name="dest"></select>
+          </li>
+
+          <li>
+            <label for="kpaths"> Number of Paths </label>
+          </li>
+          <li>
+            <input id="kpaths" name="k" type="number" />
+          </li>
+
+          <li>
+            <input type="submit" value="Calculate" />
+          </li><span id="msg"></span>
+        </ul>
+      </fieldset>
+    </form>
+
+
+    <label for='output'>
+      <h4>Shortest path(s) from "source node " to "destination node" </h4>
+    </label>
+    <div id='output' class='output'>
+
+      Example Output:
+
+      <p>
+        Source Node: "from above input"
+        <br /> Destination Node: "from above input"
+        <br /> Path: 1 -> 2 -> 3 -> 4 -> 7 -> 8
+        <br /> Cost: some floating point Number
+      </p>
+      <p>
+        Source Node: "from above input"
+        <br /> Destination Node: "from above input"
+        <br /> Path: 1 -> 2 -> 3 -> 4 -> 7 -> 8
+        <br /> Cost: some floating point Number
+      </p>
+      <p>
+        Source Node: "from above input"
+        <br /> Destination Node: "from above input"
+        <br /> Path: 1 -> 2 -> 3 -> 4 -> 7 -> 8
+        <br /> Cost: some floating point Number
+      </p>
+
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="left">
+    <form action="/home">
+      <fieldset>
+        <legend><h4>Back to File Upload</h4></legend>
+        <ul>
+          <li>
+            <input type="submit" value="Back " />
+          </li>
+        </ul>
+      </fieldset>
+    </form>
+    </div>
+<!--
+    <div class="right">
+    <form action="/download">
+      <fieldset>
+        <legend><h4>Download Topology</h4></legend>
+        <ul>
+          <li>
+            <input type="submit" value="Download"/>
+          </li>
+        </ul>
+      </fieldset>
+    </form>
+    </div>
+-->
+    
+  </div>
+
+</body>
+
 </html>
 
 <!--
