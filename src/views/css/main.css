@@ -16,11 +16,20 @@ li {
 }
 
 input {
+  font: inherit;
+  text-decoration: none;
+  background-color:  #EEEEEE;
+  color: #333333;
   padding: 10px 20px 10px 20px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+  border-left: 1px solid #CCCCCC;
 }
 
 select {
   padding: 10px 20px 10px 20px;
+  cursor: pointer;
 }
 
 progress {
@@ -75,6 +84,21 @@ progress {
   width: 20%;
   margin: auto;
 }
+
+.button {
+  font: inherit;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 10px 20px 10px 20px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+  border-left: 1px solid #CCCCCC;
+  margin-top: 50px;
+  margin-bottom: 5%;
+}
+
 
 
 
