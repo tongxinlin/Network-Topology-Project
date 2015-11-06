@@ -32,3 +32,4 @@ func GetDB() (session *mgo.Session, err error) {
 	session, err = mgo.Dial(DB_HOST)
 	return
 }
+

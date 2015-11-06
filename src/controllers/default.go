@@ -76,7 +76,7 @@ func ProcessedFile(uploadedFile string, kValue string)string{
 func RenderHomepage(rw http.ResponseWriter, req *http.Request) {
 	
 	// grab index.html from views 
-	homepage, err := template.ParseFiles("src/views/html/index.html")
+	homepage, err := template.ParseFiles("index.html")
 	
 	if err != nil {
 		log.Println(err)
@@ -92,7 +92,7 @@ func RenderHomepage(rw http.ResponseWriter, req *http.Request) {
 func RenderQueryPage(rw http.ResponseWriter, req *http.Request) {
 	
 	// grab query.html from views 
-	query, err := template.ParseFiles("src/views/html/query.html")
+	query, err := template.ParseFiles("query.html")
 	
 	if err != nil {
 		log.Println(err)
