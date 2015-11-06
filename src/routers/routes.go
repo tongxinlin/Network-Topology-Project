@@ -16,5 +16,4 @@ func InititalizeApp() {
 	http.HandleFunc("/home",controllers.RenderHomepage)
 	http.HandleFunc("/process",controllers.ProcessRequest)	
 	http.HandleFunc("/query",controllers.RenderQueryPage)	
-
 } 
