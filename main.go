@@ -4,7 +4,7 @@ import (
 	"net/http"
 	//"fmt"
 	"routers"
-	"models"
+	//"models"
 	"log" 
 )
 
@@ -12,7 +12,7 @@ func main() {
 
 	//inititalize app 
 	routers.InititalizeApp()
-	models.InititalizeDB()
+	//models.InititalizeDB()
 	//set the static hosting server, local host for testing right now
 	host := ":8080"
 	
