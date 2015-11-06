@@ -17,10 +17,6 @@ const(
 )
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-//just want to make it looks easier, ignore all error checking temporarily
-
-
 func ProcessRequest(rw http.ResponseWriter, req *http.Request){
 	PrepareDirs()
 	outputFileName := ProcessedFile(UploadedFile(rw,req))
@@ -71,7 +67,7 @@ func ProcessedFile(uploadedFile string, kValue string)string{
 	
 	return outputFileName
 }
-////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 func RenderHomepage(rw http.ResponseWriter, req *http.Request) {
 	
