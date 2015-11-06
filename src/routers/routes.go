@@ -12,7 +12,7 @@ func InititalizeApp() {
 	http.Handle("/css/", http.FileServer(http.Dir("src/views")))
     http.Handle("/js/", http.FileServer(http.Dir("src/views")))
 	
-	// routes the homepage to the browser
+	// routes the pages of the apps to the browser
 	http.HandleFunc("/home",controllers.RenderHomepage)
 	http.HandleFunc("/upload",controllers.UploadFile)
 	http.HandleFunc("/process",controllers.ProcessQuery)	

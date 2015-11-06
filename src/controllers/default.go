@@ -27,6 +27,8 @@ func ProcessQuery(rw http.ResponseWriter, req *http.Request){
 	fmt.Fprintln(rw,string(outputContent))
 }
 
+
+// If the input and output folders are not there create them. 
 func PrepareDirs(){
 	//create ./src/tmp/input & ./src/tmp/output
 	_, err1 := os.Stat(upload_dir)
@@ -39,6 +41,7 @@ func PrepareDirs(){
 		os.MkdirAll(output_dir, 0711)
 	}
 }
+
 
 func UploadFile(w http.ResponseWriter, r *http.Request){
 	PrepareDirs()
@@ -59,7 +62,7 @@ func UploadFile(w http.ResponseWriter, r *http.Request){
 
 
 func GetQueryData(w http.ResponseWriter, r *http.Request){
-	//save all current query value (in global)
+	// save all current query value (in global)
 	dest = r.FormValue("dest")
 	src = r.FormValue("src")
 	kPaths = r.FormValue("kpaths")
@@ -68,11 +71,11 @@ func GetQueryData(w http.ResponseWriter, r *http.Request){
 
 func ExecuteAlgorithm(){
 	executablePath := "./src/executable/algorithm"
-	//command line arguments that will be passed to the algorithm
+	// command line arguments that will be passed to the algorithm
 	argv := []string{uploadedFileName, dest, src, kPaths}
 	cmd := exec.Command(executablePath, argv...)
 
-	//get the output file name from stdout
+	// get the output file name from stdout
 	output, _ := cmd.Output()
 	outputFileName = string(output)
 }
