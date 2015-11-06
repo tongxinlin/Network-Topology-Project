@@ -18,17 +18,17 @@ const(
 )
 
 
-func ProcessRequest(rw http.ResponseWriter, req *http.Request){
-	PrepareDirs()
-	outputFileName := ProcessedFile(UploadedFile(rw,req))
-	
-	fmt.Println(outputFileName)
-	
+var uploadedFileName, outputFileName, dest, src, kPaths string
+
+func ProcessQuery(rw http.ResponseWriter, req *http.Request){
+	GetQueryData(rw,req)
+	ExecuteAlgorithm()
 	outputContent, _ := ioutil.ReadFile(outputFileName)
 	fmt.Fprintln(rw,string(outputContent))
 }
 
 func PrepareDirs(){
+	//create ./src/tmp/input & ./src/tmp/output
 	_, err1 := os.Stat(upload_dir)
 	if err1 != nil {
 		os.MkdirAll(upload_dir, 0711)
@@ -40,34 +40,41 @@ func PrepareDirs(){
 	}
 }
 
-
-func UploadedFile(w http.ResponseWriter, r *http.Request) (string, string) {
+func UploadFile(w http.ResponseWriter, r *http.Request){
+	PrepareDirs()
 
 	// "upload-file" is from the POST method of the form on the web page
 	inputFile, header, _ := r.FormFile("upload-file")
-	kValue := r.FormValue("k")
 	defer inputFile.Close()
 	
 	// tells OS to create a file with appicable permissions
-	uploadedFile, _ := os.OpenFile(upload_dir + header.Filename, os.O_CREATE|os.O_WRONLY, 0660)
-	
+	uploadedFile, _ := os.OpenFile(upload_dir + header.Filename, os.O_CREATE|os.O_WRONLY, 0660)	
 	defer uploadedFile.Close()
 	
 	// writes to the serverFile from the POST
 	io.Copy(uploadedFile, inputFile)
-	uploadedFileName := uploadedFile.Name()
-    dbhandler.WriteToDB(uploadedFileName)
-	return uploadedFileName, kValue
+	//save current inputfile name (in global)
+	uploadedFileName = uploadedFile.Name()
 }
 
-func ProcessedFile(uploadedFile string, kValue string)string{
-	executablePath := "./src/executable/final"
-	argv := []string{uploadedFile, kValue}
+
+func GetQueryData(w http.ResponseWriter, r *http.Request){
+	//save all current query value (in global)
+	dest = r.FormValue("dest")
+	src = r.FormValue("src")
+	kPaths = r.FormValue("kpaths")
+}
+
+
+func ExecuteAlgorithm(){
+	executablePath := "./src/executable/algorithm"
+	//command line arguments that will be passed to the algorithm
+	argv := []string{uploadedFileName, dest, src, kPaths}
 	cmd := exec.Command(executablePath, argv...)
+
+	//get the output file name from stdout
 	output, _ := cmd.Output()
-	outputFileName := string(output)
-	
-	return outputFileName
+	outputFileName = string(output)
 }
 
 

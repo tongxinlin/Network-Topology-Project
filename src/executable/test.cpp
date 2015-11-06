@@ -5,15 +5,12 @@
 using namespace std;
 int main(int argc, char** argv)
 {
-	ifstream ifs;
-	ifs.open(argv[1]);
 	ofstream ofs;
 	ofs.open("./src/tmp/output/output.txt");
-	char c;
-	while(ifs >> c){
-		ofs << c;
-	}
-	ifs.close();
+	ofs << "uploaded file name: " <<argv[1] << " ";
+	ofs << "dest: " << argv[2] << " ";
+	ofs << "src: " << argv[3] << " ";
+	ofs << "kpaths: " << argv[4] << " ";
 	ofs.close();
 	cout << "./src/tmp/output/output.txt";
     return 0;

@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="/css/main.css" />
   <script type="text/javascript" src="/js/jquery-1.11.3.js"></script>
   <script type="text/javascript" src="/js/jquery.form.min.js"></script>
-  <script type="text/javascript" src="/js/form.js"></script>
+  <script type="text/javascript" src="/js/query-form.js"></script>
 <!--  <script type="text/javascript" src="/js/dropDownMenus.js"></script>-->
 </head>
 
@@ -34,7 +34,7 @@
     </form>
 -->
     
-    <form id="form" enctype="multipart/form-data" action="/process" method="post">
+    <form id="query-form" enctype="multipart/form-data" action="/process" method="post">
       <fieldset>
         <legend>
           <h4>Define Nodes</h4></legend>
@@ -58,12 +58,12 @@
             <label for="kpaths"> Number of Paths </label>
           </li>
           <li>
-            <input id="kpaths" name="k" type="number" />
+            <input id="kpaths" name="kpaths" type="number" />
           </li>
 
           <li>
             <input type="submit" value="Calculate" />
-          </li><span id="msg"></span>
+          </li><span id="query-msg"></span>
         </ul>
       </fieldset>
     </form>

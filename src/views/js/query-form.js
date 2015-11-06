@@ -6,7 +6,7 @@ $(function(){
     }; 
  
     // bind to the form's submit event 
-    $('#form').submit(function() { 
+    $('#query-form').submit(function() { 
         $(this).ajaxSubmit(options); 
         return false; 
     }); 
@@ -14,11 +14,11 @@ $(function(){
 
 // pre-submit callback
 function showRequest(formData) {     
-    return true; 
+    return true;
 } 
  
 // post-submit callback 
 function showResponse(responseText) { 
-    $("#msg").html("  Upload Successful");
+    $("#query-msg").html("Processed Successfully");
 	$("#output").html(responseText);
 }

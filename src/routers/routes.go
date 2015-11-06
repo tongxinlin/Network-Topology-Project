@@ -14,6 +14,7 @@ func InititalizeApp() {
 	
 	// routes the homepage to the browser
 	http.HandleFunc("/home",controllers.RenderHomepage)
-	http.HandleFunc("/process",controllers.ProcessRequest)	
+	http.HandleFunc("/upload",controllers.UploadFile)
+	http.HandleFunc("/process",controllers.ProcessQuery)	
 	http.HandleFunc("/query",controllers.RenderQueryPage)	
 } 

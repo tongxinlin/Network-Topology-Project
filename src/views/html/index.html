@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="/css/main.css" />
   <script type="text/javascript" src="/js/jquery-1.11.3.js"></script>
   <script type="text/javascript" src="/js/jquery.form.min.js"></script>
-  <script type="text/javascript" src="/js/form.js"></script>
+  <script type="text/javascript" src="/js/index-form.js"></script>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
       </p>
   </div>
   <div class="middle">
-  <form id="form" enctype="multipart/form-data" action="/process" method="post">
+  <form id="index-form" enctype="multipart/form-data" action="/upload" method="post">
     <fieldset>
        <legend><h4>File Upload</h4></legend>
       <ul>
@@ -28,7 +28,7 @@
           <input type="file" name="upload-file" />
         </li>
         <li>
-          <input type="submit" value="Upload" /><span id="msg"></span>
+          <input type="submit" value="Upload" /><span id="index-msg"></span>
         </li>
         
 <!--
