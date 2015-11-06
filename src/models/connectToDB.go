@@ -12,7 +12,7 @@ import (
 )
 
 
-const DB_HOST = "localhost:27017"
+const DB_HOST = "mongodb://localhost:27017"
 
 
 func InititalizeDB() {

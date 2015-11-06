@@ -9,6 +9,7 @@ import (
 	"io"
 	"io/ioutil"
 	"os/exec"
+    "dbhandler"
 )
 
 const(
@@ -55,6 +56,7 @@ func UploadedFile(w http.ResponseWriter, r *http.Request) (string, string) {
 	// writes to the serverFile from the POST
 	io.Copy(uploadedFile, inputFile)
 	uploadedFileName := uploadedFile.Name()
+    dbhandler.WriteToDB(uploadedFileName)
 	return uploadedFileName, kValue
 }
 
