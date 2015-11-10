@@ -68,8 +68,8 @@ func WriteToDB(path string) {
 
   //var entry []string
   for index,line := range lines {
-    if index > 1{
-        entry := strings.Split(line, " ")
+    if index > 2{
+        entry := strings.Fields(line)
         //cost, _ := strconv.ParseFloat(entry[2], 64)
         err = topology.Insert(&Input{Src_ip: entry[0], Dest_ip: entry[1], Cost: entry[2]})
         if err != nil {
