@@ -16,6 +16,19 @@
 #include "DijkstraShortestPathAlg.h"
 #include "YenTopKShortestPathsAlg.h"
 
+#include <bsoncxx/builder/stream/document.hpp>
+#include <bsoncxx/types.hpp>
+
+#include <mongocxx/client.hpp>
+#include <mongocxx/instance.hpp>
+
+using bsoncxx::builder::stream::document;
+using bsoncxx::builder::stream::open_document;
+using bsoncxx::builder::stream::close_document;
+using bsoncxx::builder::stream::open_array;
+using bsoncxx::builder::stream::close_array;
+using bsoncxx::builder::stream::finalize;
+
 using namespace std;
 
 
@@ -35,6 +48,11 @@ void getKShortestPaths(int k, int startVertex, int destinationVertex, string fil
 	Graph my_graph(filename);
     
     // TODO: Create some kind of struct for all wanted ip pairs
+    mongocxx::instance inst{};
+    mongocxx::client conn{};
+
+    auto topology = conn["test"]["topology"];
+    auto topology = conn["test"]["shortestpaths"];
     
     // TODO: Get the wanted ips
 	YenTopKShortestPathsAlg yenAlg(my_graph, my_graph.get_vertex(startVertex),

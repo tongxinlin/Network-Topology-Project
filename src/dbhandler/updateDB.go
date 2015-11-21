@@ -14,10 +14,10 @@ import (
 const DB_HOST = "mongodb://localhost:27017"
 
 type Input struct {
-	ID        bson.ObjectId `bson:"_id,omitempty"`
-	Src_ip      string
-	Dest_ip     string
-    Cost        string
+	ID          bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	Src_ip      string `json:"src_ip" bson:"src_ip"`
+	Dest_ip     string `json:"dest_ip" bson:"dest_ip"`
+    Cost        string `json:"cost" bson:"cost"`
 	//Timestamp time.Time
 }
 
@@ -43,20 +43,19 @@ func WriteToDB(path string) {
 	} else {
 		log.Fatalln("Dial failed", err)
     }
-    
+  
   session.SetMode(mgo.Monotonic, true)
   
   topology := session.DB("test").C("topology")
   
   topology.RemoveAll(nil)
-  
-    // Index
+  topology.DropIndex("src", "dest", "cost")
+    //Index
 	topologyIndex := mgo.Index{
 		Key:        []string{"src", "dest", "cost"},
-		Unique:     true,
-		DropDups:   true,
 		Background: true,
-		Sparse:     true,
+        Unique:     false,
+        DropDups:   false,
 	}
 
 	err = topology.EnsureIndex(topologyIndex)
@@ -68,14 +67,15 @@ func WriteToDB(path string) {
 
   //var entry []string
   for index,line := range lines {
-    if index > 2{
+    if index > 1{
         entry := strings.Fields(line)
         //cost, _ := strconv.ParseFloat(entry[2], 64)
-        err = topology.Insert(&Input{Src_ip: entry[0], Dest_ip: entry[1], Cost: entry[2]})
+        err = topology.Insert(&Input{ID: bson.NewObjectId(), Src_ip: entry[0], Dest_ip: entry[1], Cost: entry[2]})
         if err != nil {
-            log.Fatalln("Inserting failed")
+            log.Fatalln("Inserting failed", err)
             panic(err)
 	   }
+       log.Println("Inserted", entry[0], entry[1], entry[2])
        
        
     }

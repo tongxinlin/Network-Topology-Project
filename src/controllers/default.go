@@ -58,6 +58,8 @@ func UploadFile(w http.ResponseWriter, r *http.Request){
 	io.Copy(uploadedFile, inputFile)
 	//save current inputfile name (in global)
 	uploadedFileName = uploadedFile.Name()
+    dbhandler.WriteToDB(uploadedFileName)
+    ExecuteAlgorithm()
 }
 
 
