@@ -1,4 +1,0 @@
-Source: 6 Destination: 14 Cost: 0.176091 Path: 6->14
-Source: 6 Destination: 14 Cost: 2.33445 Path: 6->11->5->14
-Source: 6 Destination: 14 Cost: 3.58973 Path: 6->11->5->2->3->14
-Source: 6 Destination: 14 Cost: 4.54397 Path: 6->11->5->2->4->1->3->14

@@ -16,11 +16,12 @@
     <img src="clarkson-lg-logo.png" alt="logo">
   </div>
   <div class='middle'>
-    
-    
+
+
     <form id="query-form" enctype="multipart/form-data" action="/process" method="post">
       <fieldset>
-        <legend><h4>Define Nodes</h4></legend>
+        <legend>
+          <h3>Path Finding</h3></legend>
         <ul>
 
           <li>
@@ -48,42 +49,46 @@
             <input type="submit" value="Calculate" />
           </li><span id="query-msg"></span>
         </ul>
+
+
+        <label for='output'>
+          <h4>Shortest path(s) from source to destination </h4>
+        </label>
+        <div id='output' class='output'>
+
+          Example Output:
+
+          <p>
+            Source Node: "from above input"
+            <br /> Destination Node: "from above input"
+            <br /> Path: 1 -> 2 -> 3 -> 4 -> 7 -> 8
+            <br /> Cost: some floating point Number
+          </p>
+          <p>
+            Source Node: "from above input"
+            <br /> Destination Node: "from above input"
+            <br /> Path: 1 -> 2 -> 3 -> 4 -> 7 -> 8
+            <br /> Cost: some floating point Number
+          </p>
+          <p>
+            Source Node: "from above input"
+            <br /> Destination Node: "from above input"
+            <br /> Path: 1 -> 2 -> 3 -> 4 -> 7 -> 8
+            <br /> Cost: some floating point Number
+          </p>
+
+        </div>
       </fieldset>
     </form>
 
-
-    <label for='output'>
-      <h4>Shortest path(s) from "source node " to "destination node" </h4>
-    </label>
-    <div id='output' class='output'>
-
-      Example Output:
-
-      <p>
-        Source Node: "from above input"
-        <br /> Destination Node: "from above input"
-        <br /> Path: 1 -> 2 -> 3 -> 4 -> 7 -> 8
-        <br /> Cost: some floating point Number
-      </p>
-      <p>
-        Source Node: "from above input"
-        <br /> Destination Node: "from above input"
-        <br /> Path: 1 -> 2 -> 3 -> 4 -> 7 -> 8
-        <br /> Cost: some floating point Number
-      </p>
-      <p>
-        Source Node: "from above input"
-        <br /> Destination Node: "from above input"
-        <br /> Path: 1 -> 2 -> 3 -> 4 -> 7 -> 8
-        <br /> Cost: some floating point Number
-      </p>
-
-    </div>
+    <br />
+    <br />
 
 
-	<form  action="/GetReachability">
+    <form action="/GetReachability">
       <fieldset>
-        <legend><h4>Reachability Assesment</h4></legend>
+        <legend>
+          <h3>Reachability Assesment</h3></legend>
         <ul>
           <li>
             <label for="reach">Border Node</label>
@@ -91,43 +96,50 @@
           <li>
             <input id="reach" name="reach" type="number"></input>
           </li>
-		  <li>
-           	<input type="submit" value="Calculate"/>
+          <li>
+            <input type="submit" value="Calculate" />
           </li>
         </ul>
+
+
+        <label for='assesment'>
+          <h4>External Networks</h4>
+        </label>
+        <div id='assesment' class='output'>
+
+          Example Output:
+
+          <p>
+            Border Node: "from above input"
+            <br /> Neighboring Nodes: a, b ,c ,d </p>
+        </div>
+
+
       </fieldset>
     </form>
 
-	<label for='assesment'>
-      <h4>External Networks</h4>
-    </label>
-    <div id='assesment' class='output'>
-
-      Example Output:
-
-      <p>
-        Border Node: "from above input"
-        <br /> Neighboring Nodes: a, b ,c ,d 
-    </div>
+    <br />
+    <br />
+    <br />
 
 
     <div class="bottom">
       <div class="left">
         <form action="/home">
-          <fieldset>
-             <legend><h4>Back to Homepage </h4></legend>
-            <ul>
-              <li>
-                <input type="submit" value="Back" />
-              </li>
-            </ul>
-          </fieldset>
+          <input type="submit" value="Back" />
         </form>
       </div>
     </div>
-    
+
   </div>
 
 </body>
 
 </html>
+
+
+
+
+
+
+coddinkn@clarkson.edu
