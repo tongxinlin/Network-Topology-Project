@@ -9,7 +9,6 @@
   <script type="text/javascript" src="/js/jquery-1.11.3.js"></script>
   <script type="text/javascript" src="/js/jquery.form.min.js"></script>
   <script type="text/javascript" src="/js/query-form.js"></script>
-<!--  <script type="text/javascript" src="/js/dropDownMenus.js"></script>-->
 </head>
 
 <body>
@@ -17,27 +16,11 @@
     <img src="clarkson-lg-logo.png" alt="logo">
   </div>
   <div class='middle'>
-<!--
-    <form  action="/chooseTopology">
-      <fieldset>
-        <legend>
-          <h4>Define Topology</h4></legend>
-        <ul>
-          <li>
-            <label for="top"> Source Topology</label>
-          </li>
-          <li>
-            <select id="top" name="top"></select>
-          </li>
-        </ul>
-      </fieldset>
-    </form>
--->
+    
     
     <form id="query-form" enctype="multipart/form-data" action="/process" method="post">
       <fieldset>
-        <legend>
-          <h4>Define Nodes</h4></legend>
+        <legend><h4>Define Nodes</h4></legend>
         <ul>
 
           <li>
@@ -96,21 +79,35 @@
       </p>
 
     </div>
-  </div>
 
-<!--
-  <div class="bottom">
-    <div class="left">
+
+	<form  action="/GetReachability">
       <fieldset>
-        <legend><h4>Back to File Upload</h4></legend>
+        <legend><h4>Reachability Assesment</h4></legend>
         <ul>
           <li>
-            <a class="button" href="index.html">Back</a>
+            <label for="reach">Border Node</label>
+          </li>
+          <li>
+            <input id="reach" name="reach" type="number"></input>
           </li>
         </ul>
       </fieldset>
+    </form>
+
+	<label for='assesment'>
+      <h4>External Networks</h4>
+    </label>
+    <div id='assesment' class='output'>
+
+      Example Output:
+
+      <p>
+        Border Node: "from above input"
+        <br /> Neighboring Nodes: a, b ,c ,d 
     </div>
--->
+
+
     <div class="bottom">
       <div class="left">
         <form action="/home">
@@ -125,34 +122,9 @@
         </form>
       </div>
     </div>
-<!--
-    <div class="right">
-    <form action="/download">
-      <fieldset>
-        <legend><h4>Download Topology</h4></legend>
-        <ul>
-          <li>
-            <input type="submit" value="Download"/>
-          </li>
-        </ul>
-      </fieldset>
-    </form>
-    </div>
--->
     
   </div>
 
 </body>
 
 </html>
-
-<!--
-
-      <div class='bottom'>
-         <p>Upload Progress</p>
-        <progress id='upload-progess'  value='50' max='100'> </progress>
-        <p> Path Finding Progress</p>
-        <progress id='calc-progress' value='70' max='100'> </progress>
-      </div>
-
--->
