@@ -210,7 +210,7 @@ func QueryShortestPaths(src string, dest string, kPaths string) (string){
     
   for _, path := range paths {
     log.Println(path.Cost)
-    _, err := io.WriteString(file, "Source: " + path.Src_ip + " Destination: " + path.Dest_ip+ " Cost: " + path.Cost + " Path: " + path.Path + "\n")
+    _, err := io.WriteString(file, "Source: " + path.Src_ip + " Destination: " + path.Dest_ip+ " Cost: " + path.Cost + " Path: " + path.Path + "<br>")
           if err != nil {
             log.Println(err)
             }
