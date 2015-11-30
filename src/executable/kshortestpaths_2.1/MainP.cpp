@@ -17,21 +17,6 @@
 #include "YenTopKShortestPathsAlg.h"
 
 
-#include <bsoncxx/builder/stream/document.hpp>
-#include <bsoncxx/types.hpp>
-#include <bsoncxx/json.hpp>
-
-#include <mongocxx/client.hpp>
-#include <mongocxx/instance.hpp>
-#include <mongocxx/options/find.hpp>
-
-using bsoncxx::builder::stream::document;
-using bsoncxx::builder::stream::open_document;
-using bsoncxx::builder::stream::close_document;
-using bsoncxx::builder::stream::open_array;
-using bsoncxx::builder::stream::close_array;
-using bsoncxx::builder::stream::finalize;
-
 using namespace std;
 
 
@@ -45,82 +30,49 @@ void testDijkstraGraph()
 	result->PrintOut(cout);
 }
 
-void getKShortestPaths(string filename, ofstream& outFile)
+void getKShortestPaths(string filename, ofstream& outFile, ifstream& vertexPairs)
 {
 	//Graph my_graph("../data/test_6_2");
 	Graph my_graph(filename);
     int startVertex;
     int destinationVertex;
-    bool exists = false;
-    
-    string start;
-    string end;
-    
-    // TODO: Create some kind of struct for all wanted ip pairs
-    mongocxx::instance inst{};
-    mongocxx::client conn{};
-
-    auto db = conn["test"];
-    
-    //db["shortestpaths"].dropIndexes();
-    //document index_spec;
-    //index_spec << "source" << 1 << "dest" << 1 << "cost" << -1;
-    //db["shortestpaths"].create_index(index_spec, { unique: false });
-    
-    auto source = db["topology"].find({});
-    for (auto&& doc : source){
-        start = bsoncxx::to_json(doc);
-        startVertex = std::stoi(start);
         
-        auto dest = db["topology"].find({});
-        for (auto&& field : dest){
-            end = bsoncxx::to_json(field);
-            destinationVertex = std::stoi(end);
-            // TODO: Get the wanted ips
-            //document filter;
-            //filter << "source" << start << "dest" << end;
-            auto dest = db["shortestpaths"].find({});
-            for (auto&& doc : dest){
-                exists = true;
-                continue;
-            }
-            
-            if (startVertex != destinationVertex && !exists){
-                YenTopKShortestPathsAlg yenAlg(my_graph, my_graph.get_vertex(startVertex),
-                    my_graph.get_vertex(destinationVertex));
+    vertexPairs >> startVertex;
+    
+    while (vertexPairs){
+        vertexPairs >> destinationVertex;
+                
+        if (startVertex != destinationVertex){
+            YenTopKShortestPathsAlg yenAlg(my_graph, my_graph.get_vertex(startVertex),
+                my_graph.get_vertex(destinationVertex));
 
-                // TODO: If max k value is given, add to break the while loop
-                while(yenAlg.has_next())
-                {
-                    // TODO: Add mongoDB query here to add the entry
-                    yenAlg.next()->PrintOut(outFile);
-                    outFile << '\n';
-                }
+            while(yenAlg.has_next())
+            {
+                outFile << startVertex << " " << destinationVertex << " ";
+                yenAlg.next()->PrintOut(outFile);
             }
-            exists = false;
         }
+        vertexPairs >> startVertex;
     }
+}
 // 	System.out.println("Result # :"+i);
 // 	System.out.println("Candidate # :"+yenAlg.get_cadidate_size());
 // 	System.out.println("All generated : "+yenAlg.get_generated_path_size());
 
-}
 
 int main(int argc, const char *argv[])
 {
     string fileName = argv[1];
-    int k = stoi(argv[2]);
-    ifstream inFile;
-    inFile.open(fileName);
-    int amountOfNodes;
-    inFile >> amountOfNodes;
-    inFile.close();
     
     ofstream outFile;
-    outFile.open("./src/tmp/output/output.txt");
-    getKShortestPaths(fileName, outFile);
+    outFile.open("./src/tmp/output/results.txt");
+    
+    ifstream vertexPairs;
+    vertexPairs.open("./src/tmp/input/pairs");
+    getKShortestPaths(fileName, outFile, vertexPairs);
     outFile.close();
-    cout << "./src/tmp/output/output.txt";
+    vertexPairs.close();
+    cout << "./src/tmp/output/results.txt";
 	//testDijkstraGraph();
     
 }

@@ -148,12 +148,14 @@ public:
 	// display the content
 	void PrintOut(std::ostream& out_stream) const
 	{
-		out_stream << "Cost: " << m_dWeight << " Length: " << m_vtVertexList.size() << std::endl;
+        // if needed, amount of vertices: m_vtVertexList.size()
+		out_stream << m_dWeight << " ";
 		for(std::vector<BaseVertex*>::const_iterator pos=m_vtVertexList.begin(); pos!=m_vtVertexList.end();++pos)
 		{
+            if(pos != m_vtVertexList.begin())
+                out_stream << "->";
 			(*pos)->PrintOut(out_stream);
-			out_stream << "->";
 		}
-		out_stream << std::endl <<  "*********************************************" << std::endl;
+		out_stream << std::endl;
 	}
 };

@@ -22,7 +22,6 @@ var uploadedFileName, outputFileName, dest, src, kPaths string
 
 func ProcessQuery(rw http.ResponseWriter, req *http.Request){
 	GetQueryData(rw,req)
-	ExecuteAlgorithm()
 	outputContent, _ := ioutil.ReadFile(outputFileName)
 	fmt.Fprintln(rw,string(outputContent))
 }
@@ -60,6 +59,7 @@ func UploadFile(w http.ResponseWriter, r *http.Request){
 	uploadedFileName = uploadedFile.Name()
     dbhandler.WriteToDB(uploadedFileName)
     ExecuteAlgorithm()
+    dbhandler.WriteResultsToDB(outputFileName)
 }
 
 
@@ -68,13 +68,14 @@ func GetQueryData(w http.ResponseWriter, r *http.Request){
 	dest = r.FormValue("dest")
 	src = r.FormValue("src")
 	kPaths = r.FormValue("kpaths")
+    outputFileName = dbhandler.QueryShortestPaths(src, dest, kPaths)
 }
 
 
 func ExecuteAlgorithm(){
 	executablePath := "./src/executable/algorithm"
 	// command line arguments that will be passed to the algorithm
-	argv := []string{uploadedFileName, dest, src, kPaths}
+	argv := []string{uploadedFileName}
 	cmd := exec.Command(executablePath, argv...)
 
 	// get the output file name from stdout
