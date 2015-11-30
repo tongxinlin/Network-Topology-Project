@@ -69,19 +69,12 @@ progress {
 
 .bottom {
   position: relative;
-  width: 85%;
   margin: auto;
 }
 .left {
   position: relative;
   float: left;
-  width: 20%;
-  margin: auto;
-}
-.right {
-  position: relative;
-  float: right;
-  width: 20%;
+  width: 12%;
   margin: auto;
 }
 
