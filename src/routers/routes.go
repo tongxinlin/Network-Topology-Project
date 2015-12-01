@@ -6,7 +6,7 @@ import (
 )
 
 func InititalizeApp() {
-  	//testing out Go's file server stuff 
+  	// set up the html
 	fs := http.FileServer(http.Dir("src/views/html"))
 	http.Handle("/", fs)
 	http.Handle("/css/", http.FileServer(http.Dir("src/views")))
@@ -16,5 +16,6 @@ func InititalizeApp() {
 	http.HandleFunc("/home",controllers.RenderHomepage)
 	http.HandleFunc("/upload",controllers.UploadFile)
 	http.HandleFunc("/process",controllers.ProcessQuery)	
-	http.HandleFunc("/query",controllers.RenderQueryPage)	
+	http.HandleFunc("/query",controllers.RenderQueryPage)
+	http.HandleFunc("/getReachability",controllers.GetNeighbors)    
 } 

@@ -18,7 +18,7 @@ const(
 )
 
 
-var uploadedFileName, outputFileName, dest, src, kPaths string
+var uploadedFileName, outputFileName, dest, src, kPaths, node, neighborFileName string
 
 func ProcessQuery(rw http.ResponseWriter, req *http.Request){
 	GetQueryData(rw,req)
@@ -26,6 +26,12 @@ func ProcessQuery(rw http.ResponseWriter, req *http.Request){
 	fmt.Fprintln(rw,string(outputContent))
 }
 
+func GetNeighbors(rw http.ResponseWriter, req *http.Request){
+	node = req.FormValue("reach")
+    neighborFileName = dbhandler.NeighborsOf(node)
+	outputContent, _ := ioutil.ReadFile(neighborFilename)
+	fmt.Fprintln(rw,string(outputContent))
+}
 
 // If the input and output folders are not there create them. 
 func PrepareDirs(){

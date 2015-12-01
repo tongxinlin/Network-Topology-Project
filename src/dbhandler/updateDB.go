@@ -210,7 +210,48 @@ func QueryShortestPaths(src string, dest string, kPaths string) (string){
     
   for _, path := range paths {
     log.Println(path.Cost)
-    _, err := io.WriteString(file, "Source: " + path.Src_ip + " Destination: " + path.Dest_ip+ " Cost: " + path.Cost + " Path: " + path.Path + "<br>")
+    _, err := io.WriteString(file, "Source: " + path.Src_ip + "<br>Destination: " + path.Dest_ip+ "<br>Cost: " + path.Cost + "<br>Path: " + path.Path + "<br><br>")
+          if err != nil {
+            log.Println(err)
+            }
+  }
+  return filePath
+  
+}
+
+func NeighborsOf(node string) (string){
+  var filePath = "./src/tmp/output/neighbors.txt"
+  
+  file, err := os.OpenFile(filePath, os.O_TRUNC|os.O_WRONLY, 0660)
+  if err != nil {
+    log.Println(err)
+  }
+  defer file.Close()
+  
+  session, err := mgo.Dial(DB_HOST)
+  defer session.Close()
+  if err == nil {
+	log.Println("Database connection verified")
+  } else {
+    log.Fatalln("Dial failed", err)
+  }
+  
+  session.SetMode(mgo.Monotonic, true)
+  
+  topology := session.DB("test").C("topology")
+  
+  var neighbors []Input
+  
+  
+  topology.Find(bson.M{"src_ip": node}).All(&neighbors)
+  
+  _, err = io.WriteString(file, "Border Node: " + node + "<br>Neighboring Nodes: ")
+  if err != nil {
+    log.Println(err)
+  }
+  
+  for _, path := range neighbors {
+    _, err := io.WriteString(file, path.Dest_ip + " ")
           if err != nil {
             log.Println(err)
             }
