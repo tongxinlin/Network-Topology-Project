@@ -29,7 +29,7 @@ func ProcessQuery(rw http.ResponseWriter, req *http.Request){
 func GetNeighbors(rw http.ResponseWriter, req *http.Request){
 	node = req.FormValue("reach")
     neighborFileName = dbhandler.NeighborsOf(node)
-	outputContent, _ := ioutil.ReadFile(neighborFilename)
+	outputContent, _ := ioutil.ReadFile(neighborFileName)
 	fmt.Fprintln(rw,string(outputContent))
 }
 

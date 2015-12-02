@@ -54,11 +54,11 @@
         <label for='output'>
           <h4>Shortest path(s) from source to destination </h4>
         </label>
-        <div id='output' class='output'>
-
-          Example Output:
-
+        <div id='query-output' class='output' style="height: 300px;overflow-y: scroll;border: 1px solid #CCC;">
+        <div id = "query-output-example">
           <p>
+            Example Output:
+            <br/><br/>
             Source Node: "from above input"
             <br /> Destination Node: "from above input"
             <br /> Path: 1 -> 2 -> 3 -> 4 -> 7 -> 8
@@ -76,15 +76,15 @@
             <br /> Path: 1 -> 2 -> 3 -> 4 -> 7 -> 8
             <br /> Cost: some floating point Number
           </p>
-
+        </div>
         </div>
       </fieldset>
     </form>
 
-    <form action="/GetReachability">
+    <form id = "reachability-form" action="/GetReachability" method = "post">
       <fieldset>
         <legend>
-          <h3>Reachability Assesment</h3></legend>
+          <h3>Reachability Assessment</h3></legend>
         <ul>
           <li>
             <label for="reach">Border Node</label>
@@ -98,16 +98,17 @@
         </ul>
 
 
-        <label for='assesment'>
+        <label for='assessment'>
           <h4>External Networks</h4>
         </label>
-        <div id='assesment' class='output'>
-
-          Example Output:
-
+        <div id='assessment-output' class='output' style="height: 300px;overflow-y: scroll;border: 1px solid #CCC;">
+        <div id = "assessment-output-example">
           <p>
+            Example Output:
+            <br/><br/>
             Border Node: "from above input"
             <br /> Neighboring Nodes: a, b ,c ,d </p>
+        </div>
         </div>
       </fieldset>
     </form>
