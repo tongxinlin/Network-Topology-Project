@@ -9,7 +9,6 @@ import (
   "strconv"
   "gopkg.in/mgo.v2"
   "gopkg.in/mgo.v2/bson"
-  //"time"
 )
 
 const DB_HOST = "mongodb://localhost:27017"

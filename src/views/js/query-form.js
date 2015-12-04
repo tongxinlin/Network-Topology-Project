@@ -21,8 +21,8 @@ function showRequest(formData) {
 function showResponse(responseText) { 
     //$("#query-msg").html("Processed Successfully");
     document.getElementById("query-output-example").innerHTML = "";
-    var result =responseText + " ";
-    document.getElementById("query-output").innerHTML += result;
+    var result = responseText + " ";
+    document.getElementById("query-output").innerHTML + = result;
 }
 
 $(function(){

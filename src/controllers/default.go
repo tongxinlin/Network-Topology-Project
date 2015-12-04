@@ -35,7 +35,6 @@ func GetNeighbors(rw http.ResponseWriter, req *http.Request){
 
 // If the input and output folders are not there create them. 
 func PrepareDirs(){
-	//create ./src/tmp/input & ./src/tmp/output
 	_, err1 := os.Stat(upload_dir)
 	if err1 != nil {
 		os.MkdirAll(upload_dir, 0711)
@@ -51,7 +50,7 @@ func PrepareDirs(){
 func UploadFile(w http.ResponseWriter, r *http.Request){
 	PrepareDirs()
 
-	// "upload-file" is from the POST method of the form on the web page
+	// "upload-file" is from the form in index.html
 	inputFile, header, _ := r.FormFile("upload-file")
 	defer inputFile.Close()
 	
@@ -61,6 +60,7 @@ func UploadFile(w http.ResponseWriter, r *http.Request){
 	
 	// writes to the serverFile from the POST
 	io.Copy(uploadedFile, inputFile)
+  
 	//save current inputfile name (in global)
 	uploadedFileName = uploadedFile.Name()
     dbhandler.WriteToDB(uploadedFileName)
