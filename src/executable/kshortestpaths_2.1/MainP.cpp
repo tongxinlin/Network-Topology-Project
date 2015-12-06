@@ -30,22 +30,31 @@ void testDijkstraGraph()
 	result->PrintOut(cout);
 }
 
+// Input: input file (string), output file (string), file containing ip pairs (ifstream&)
+//
+// Calculates the shortest paths between given ip pairs
+// Outputs the result to given file
 void getKShortestPaths(string filename, ofstream& outFile, ifstream& vertexPairs)
 {
-	//Graph my_graph("../data/test_6_2");
+    // Create a graph of the topology
 	Graph my_graph(filename);
+    // Variables for ip pairs
     int startVertex;
     int destinationVertex;
-        
+    
     vertexPairs >> startVertex;
     
+    // Get shortest paths for all ip pairs
     while (vertexPairs){
         vertexPairs >> destinationVertex;
-                
+        
+        // Eliminate null paths
         if (startVertex != destinationVertex){
+            // Calculate the shortest paths for one ip pair
             YenTopKShortestPathsAlg yenAlg(my_graph, my_graph.get_vertex(startVertex),
                 my_graph.get_vertex(destinationVertex));
-
+            // Write all shortest paths to file
+            // Modify this by adding a limit if used for large inputs
             while(yenAlg.has_next())
             {
                 outFile << startVertex << " " << destinationVertex << " ";
@@ -55,24 +64,22 @@ void getKShortestPaths(string filename, ofstream& outFile, ifstream& vertexPairs
         vertexPairs >> startVertex;
     }
 }
-// 	System.out.println("Result # :"+i);
-// 	System.out.println("Candidate # :"+yenAlg.get_cadidate_size());
-// 	System.out.println("All generated : "+yenAlg.get_generated_path_size());
 
 
 int main(int argc, const char *argv[])
 {
+    // Get the file to process
     string fileName = argv[1];
-    
     ofstream outFile;
+    // File to write the shortest paths to
     outFile.open("./src/tmp/output/results.txt");
-    
     ifstream vertexPairs;
-    vertexPairs.open("./src/tmp/input/pairs");
+    // File to read all ip pairs from
+    vertexPairs.open("./src/tmp/input/pairs.txt");
+    // Calculate the shortest paths
     getKShortestPaths(fileName, outFile, vertexPairs);
     outFile.close();
     vertexPairs.close();
-    cout << "./src/tmp/output/results.txt";
-	//testDijkstraGraph();
+    return 0;
     
 }

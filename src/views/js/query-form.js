@@ -19,10 +19,7 @@ function showRequest(formData) {
  
 // post-submit callback 
 function showResponse(responseText) { 
-    //$("#query-msg").html("Processed Successfully");
-    document.getElementById("query-output-example").innerHTML = "";
-    var result =responseText + " ";
-    document.getElementById("query-output").innerHTML += result;
+    document.getElementById("query-output").innerHTML = responseText;
 }
 
 $(function(){
@@ -46,7 +43,5 @@ function showRequest2(formData) {
  
 // post-submit callback 
 function showResponse2(responseText) { 
-    document.getElementById("assessment-output-example").innerHTML = "";
-    var result = responseText;
-    document.getElementById("assessment-output").innerHTML = result;
+    document.getElementById("assessment-output").innerHTML = responseText;
 }

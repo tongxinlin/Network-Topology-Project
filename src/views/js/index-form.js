@@ -19,5 +19,5 @@ function showRequest() {
  
 // post-submit callback 
 function showResponse() { 
-    $("#index-msg").html("    Uploaded Successfully");
+    $("#index-msg").html("Uploaded Successfully");
 }

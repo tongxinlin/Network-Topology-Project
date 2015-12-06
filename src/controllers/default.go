@@ -12,20 +12,23 @@ import (
     "dbhandler"
 )
 
+// Global input and output directories
 const(
 	upload_dir = "./src/tmp/input/"
 	output_dir = "./src/tmp/output/"
 )
 
-
+// Global variables
 var uploadedFileName, outputFileName, dest, src, kPaths, node, neighborFileName string
 
+// Handles the queries for shortest paths 
 func ProcessQuery(rw http.ResponseWriter, req *http.Request){
 	GetQueryData(rw,req)
 	outputContent, _ := ioutil.ReadFile(outputFileName)
 	fmt.Fprintln(rw,string(outputContent))
 }
 
+// Handles queries for neighbor searches
 func GetNeighbors(rw http.ResponseWriter, req *http.Request){
 	node = req.FormValue("reach")
     neighborFileName = dbhandler.NeighborsOf(node)
@@ -35,7 +38,6 @@ func GetNeighbors(rw http.ResponseWriter, req *http.Request){
 
 // If the input and output folders are not there create them. 
 func PrepareDirs(){
-	//create ./src/tmp/input & ./src/tmp/output
 	_, err1 := os.Stat(upload_dir)
 	if err1 != nil {
 		os.MkdirAll(upload_dir, 0711)
@@ -47,48 +49,49 @@ func PrepareDirs(){
 	}
 }
 
-
+// Handles the file upload
 func UploadFile(w http.ResponseWriter, r *http.Request){
 	PrepareDirs()
-
-	// "upload-file" is from the POST method of the form on the web page
 	inputFile, header, _ := r.FormFile("upload-file")
 	defer inputFile.Close()
 	
-	// tells OS to create a file with appicable permissions
+	// create a new file
 	uploadedFile, _ := os.OpenFile(upload_dir + header.Filename, os.O_CREATE|os.O_WRONLY, 0660)	
 	defer uploadedFile.Close()
 	
 	// writes to the serverFile from the POST
 	io.Copy(uploadedFile, inputFile)
+    
 	//save current inputfile name (in global)
 	uploadedFileName = uploadedFile.Name()
+    
+    // Write the data and the shortest paths to db
     dbhandler.WriteToDB(uploadedFileName)
     ExecuteAlgorithm()
-    dbhandler.WriteResultsToDB(outputFileName)
+    dbhandler.WriteResultsToDB()
 }
 
-
+// Parses the values from query and calls QueryShortestPaths
 func GetQueryData(w http.ResponseWriter, r *http.Request){
 	// save all current query value (in global)
 	dest = r.FormValue("dest")
 	src = r.FormValue("src")
 	kPaths = r.FormValue("kpaths")
+    
+    // Pass the resulting output in global variable
     outputFileName = dbhandler.QueryShortestPaths(src, dest, kPaths)
 }
 
-
+// Executes Yen's algorithm
 func ExecuteAlgorithm(){
 	executablePath := "./src/executable/algorithm"
-	// command line arguments that will be passed to the algorithm
-	argv := []string{uploadedFileName}
-	cmd := exec.Command(executablePath, argv...)
-
-	// get the output file name from stdout
-	output, _ := cmd.Output()
-	outputFileName = string(output)
+	// Process the uploaded file (uploadedFileName stored in global)
+	cmd := exec.Command(executablePath, uploadedFileName)
+    err := cmd.Run()
+	if err != nil {
+		log.Println(err)
+	}
 }
-
 
 func RenderHomepage(rw http.ResponseWriter, req *http.Request) {
 	
