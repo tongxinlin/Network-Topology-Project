@@ -64,7 +64,7 @@ func UploadFile(w http.ResponseWriter, r *http.Request){
 	//save current inputfile name (in global)
 	uploadedFileName = uploadedFile.Name()
     dbhandler.WriteToDB(uploadedFileName)
-    ExecuteAlgorithm()
+    ExecuteYensAlgorithm()
     dbhandler.WriteResultsToDB(outputFileName)
 }
 
@@ -78,7 +78,7 @@ func GetQueryData(w http.ResponseWriter, r *http.Request){
 }
 
 
-func ExecuteAlgorithm(){
+func ExecuteYensAlgorithm(){
 	executablePath := "./src/executable/algorithm"
 	// command line arguments that will be passed to the algorithm
 	argv := []string{uploadedFileName}
