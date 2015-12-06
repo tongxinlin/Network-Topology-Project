@@ -1,6 +1,5 @@
 $(function(){
 	var options = { 
-       // target:        '#output',   // target element(s) to be updated with server response 
         beforeSubmit:  showRequest,  // pre-submit callback 
         success:       showResponse,  // post-submit callback
     }; 
@@ -23,8 +22,7 @@ function showResponse(responseText) {
 }
 
 $(function(){
-    var options = { 
-       // target:        '#output',   // target element(s) to be updated with server response 
+    var options = {
         beforeSubmit:  showRequest2,  // pre-submit callback 
         success:       showResponse2,  // post-submit callback
     }; 

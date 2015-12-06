@@ -52,6 +52,7 @@ func PrepareDirs(){
 // Handles the file upload
 func UploadFile(w http.ResponseWriter, r *http.Request){
 	PrepareDirs()
+
 	inputFile, header, _ := r.FormFile("upload-file")
 	defer inputFile.Close()
 	
@@ -61,14 +62,15 @@ func UploadFile(w http.ResponseWriter, r *http.Request){
 	
 	// writes to the serverFile from the POST
 	io.Copy(uploadedFile, inputFile)
-    
+
 	//save current inputfile name (in global)
 	uploadedFileName = uploadedFile.Name()
     
     // Write the data and the shortest paths to db
     dbhandler.WriteToDB(uploadedFileName)
-    ExecuteAlgorithm()
-    dbhandler.WriteResultsToDB()
+
+    ExecuteYensAlgorithm()
+    dbhandler.WriteResultsToDB(outputFileName)
 }
 
 // Parses the values from query and calls QueryShortestPaths
@@ -82,8 +84,8 @@ func GetQueryData(w http.ResponseWriter, r *http.Request){
     outputFileName = dbhandler.QueryShortestPaths(src, dest, kPaths)
 }
 
-// Executes Yen's algorithm
-func ExecuteAlgorithm(){
+
+func ExecuteYensAlgorithm(){
 	executablePath := "./src/executable/algorithm"
 	// Process the uploaded file (uploadedFileName stored in global)
 	cmd := exec.Command(executablePath, uploadedFileName)
