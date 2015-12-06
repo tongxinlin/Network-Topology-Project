@@ -70,7 +70,7 @@ func UploadFile(w http.ResponseWriter, r *http.Request){
     dbhandler.WriteToDB(uploadedFileName)
 
     ExecuteYensAlgorithm()
-    dbhandler.WriteResultsToDB(outputFileName)
+    dbhandler.WriteResultsToDB()
 }
 
 // Parses the values from query and calls QueryShortestPaths

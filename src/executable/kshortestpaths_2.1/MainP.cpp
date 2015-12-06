@@ -30,7 +30,7 @@ void testDijkstraGraph()
 	result->PrintOut(cout);
 }
 
-// Input: input file (string), output file (string), file containing ip pairs (ifstream&)
+// Input: input file (string), output file (ofstream&), file containing ip pairs (ifstream&)
 //
 // Calculates the shortest paths between given ip pairs
 // Outputs the result to given file
