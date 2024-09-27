@@ -1,0 +1,56 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Network topology</title>
+  <link rel="stylesheet" type="text/css" href="/css/main.css" />
+  <script type="text/javascript" src="/js/jquery-1.11.3.js"></script>
+  <script type="text/javascript" src="/js/jquery.form.min.js"></script>
+  <script type="text/javascript" src="/js/index-form.js"></script>
+</head>
+
+<body>
+  <div class="top">
+      <img src="clarkson-lg-logo.png" alt="logo">
+  </div>
+  <div class="team">
+      <p>
+        <h4>CS350 F15 Team 3 Network Topology</h4>
+        Kevin John Hemstree-Grimmer,
+        Tongxin Lin,
+        Ville Runola,
+        William Freitag 
+      </p>
+  </div>
+  <div class="middle">
+  <form id="index-form" enctype="multipart/form-data" action="/upload" method="post">
+    <fieldset>
+       <legend><h3>File Upload</h3></legend>
+      <ul>
+        <li>
+          <input type="file" name="upload-file" />
+        </li>
+        <li>
+          <input type="submit" value="Upload" /><span id="index-msg"></span>
+        </li>
+
+      </ul>
+    </fieldset>
+  </form>
+ 
+  <form action="/query">
+    <fieldset>
+       <legend><h3>Query Topology</h3></legend>
+      <ul>
+        <li>
+          <input type="submit" value="Query" />
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+    
+  </div>
+</body>
+
+</html>

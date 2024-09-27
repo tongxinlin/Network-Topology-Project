@@ -1,0 +1,1 @@
+Border Node: 11<br>Neighboring Nodes: 5 12 

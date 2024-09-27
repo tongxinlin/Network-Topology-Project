@@ -41,3 +41,15 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*.v2
+
+src/executable/mongo-cxx-driver/
+
+src/executable/mongo-c-driver/
+
+src/tmp/input/test_15
+
+Network-Topology-Project
+
+src/executable/algorithm
